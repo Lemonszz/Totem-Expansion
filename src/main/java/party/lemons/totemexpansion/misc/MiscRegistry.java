@@ -62,6 +62,9 @@ public class MiscRegistry
 				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_LAVA, new EntityVillager.PriceInfo(4, 12)),
 				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_PLUMMETING, new EntityVillager.PriceInfo(5, 15)),
 				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_UNDYING, new EntityVillager.PriceInfo(6, 12)),
+				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_BREATHING, new EntityVillager.PriceInfo(6, 12)),
+				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_EXPLODE, new EntityVillager.PriceInfo(6, 12)),
+				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_REPAIR, new EntityVillager.PriceInfo(6, 12)),
 				new EntityVillager.ListItemForEmeralds(new ItemStack(Items.SKULL, 1, 0), new EntityVillager.PriceInfo(15, 39)),
 				new EntityVillager.ListItemForEmeralds(new ItemStack(Items.SKULL, 1, 4), new EntityVillager.PriceInfo(15, 39)),
 				new EntityVillager.ListItemForEmeralds(new ItemStack(Items.SKULL, 1, 2), new EntityVillager.PriceInfo(15, 39))
