@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -145,7 +146,7 @@ public class TotemEventHandler
 	@SubscribeEvent
 	public static void onToolBreak(PlayerDestroyItemEvent event)
 	{
-		if(event.getHand() != null)
+		if(event.getHand() != null && event.getOriginal().getItem() instanceof ItemTool)
 		{
 			ItemStack stack = findTotem(event.getEntityPlayer(), TotemType.TOOL_BREAK);
 			if(!stack.isEmpty())
