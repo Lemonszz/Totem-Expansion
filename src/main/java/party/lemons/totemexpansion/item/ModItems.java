@@ -98,6 +98,8 @@ public class ModItems
 		//TODO: automatically do this
 		registerModels(TOTEM_BASE, TOTEM_HEAD_PLUMMETING, TOTEM_HEAD_UNDYING, TOTEM_PLUMMETING, TOTEM_HEAD_LAVA, TOTEM_LAVA,
 		TOTEM_HEAD_BREATHING, TOTEM_BREATHING, TOTEM_EXPLODE, TOTEM_HEAD_EXPLODE, TOTEM_HEAD_REPAIR, TOTEM_REPAIR);
+
+		ModelLoader.setCustomModelResourceLocation(TOTEM_OF_UNDYING, 0, new ModelResourceLocation("minecraft:totem", "inventory"));
 	}
 
 	@SideOnly(Side.CLIENT)
