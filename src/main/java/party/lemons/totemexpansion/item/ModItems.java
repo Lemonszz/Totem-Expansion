@@ -89,10 +89,13 @@ public class ModItems
 		return item;
 	}
 
+	//TODO: move to client only event subscriber
+
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public static void onRegisterModel(ModelRegistryEvent event)
 	{
+		//TODO: automatically do this
 		registerModels(TOTEM_BASE, TOTEM_HEAD_PLUMMETING, TOTEM_HEAD_UNDYING, TOTEM_PLUMMETING, TOTEM_HEAD_LAVA, TOTEM_LAVA,
 		TOTEM_HEAD_BREATHING, TOTEM_BREATHING, TOTEM_EXPLODE, TOTEM_HEAD_EXPLODE, TOTEM_HEAD_REPAIR, TOTEM_REPAIR);
 	}
