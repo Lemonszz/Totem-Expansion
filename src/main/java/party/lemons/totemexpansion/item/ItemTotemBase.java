@@ -11,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
@@ -19,6 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import party.lemons.totemexpansion.TotemExpansion;
 import party.lemons.totemexpansion.config.ModConstants;
 import party.lemons.totemexpansion.misc.CreativeTab;
+import party.lemons.totemexpansion.misc.IModel;
 import party.lemons.totemexpansion.network.MessageItemEffect;
 
 import javax.annotation.Nullable;
@@ -28,19 +30,16 @@ import java.util.List;
  * Created by Sam on 6/04/2018.
  */
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "baubles")
-public class ItemTotemBase extends Item implements IBauble
+public class ItemTotemBase extends ItemBase implements IBauble
 {
 	private TotemType type;
 
 	public ItemTotemBase(String name, TotemType type)
 	{
-		this.setUnlocalizedName(ModConstants.MODID + "." + name);
-		this.setRegistryName(name);
+		super(name);
 
 		this.type = type;
 		this.setMaxStackSize(1);
-
-		this.setCreativeTab(CreativeTab.tab);
 	}
 
 	public boolean onActivate(EntityPlayer living, ItemStack stack, @Nullable DamageSource source)
