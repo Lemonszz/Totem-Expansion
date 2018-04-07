@@ -1,0 +1,16 @@
+[
+{
+  "modid": "totemexpansion",
+  "name": "Totem Expansion",
+  "description": "Adds new totems",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Lemons"],
+  "credits": "Morkins",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

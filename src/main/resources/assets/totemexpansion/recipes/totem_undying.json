@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "totemexpansion:totem_base"
+    },
+    {
+      "item": "totemexpansion:totem_head_undying"
+    }
+  ],
+  "result": {
+    "item": "minecraft:totem_of_undying"
+  }
+}

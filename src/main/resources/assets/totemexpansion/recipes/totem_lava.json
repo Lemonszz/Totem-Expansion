@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "totemexpansion:totem_base"
+    },
+    {
+      "item": "totemexpansion:totem_head_lava"
+    }
+  ],
+  "result": {
+    "item": "totemexpansion:totem_lava"
+  }
+}

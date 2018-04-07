@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "totemexpansion:totem_base",
+    "count": 1
+  },
+  "pattern": [
+    " S ",
+    "CCC",
+    " C "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore" : "stickWood"
+    },
+    "C": {
+      "item": "minecraft:clay_ball"
+    }
+  }
+}

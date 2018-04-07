@@ -1,0 +1,26 @@
+entity.Villager.witch_doctor=Witch Doctor
+itemGroup.totemexpansion=Totem Expansion
+
+item.totem.desc=Revives you from the dead
+
+item.totemexpansion.totem_base.name=Totem Base
+
+item.totemexpansion.totem_falling.name=Totem of Plummeting
+item.totemexpansion.totem_falling.desc=Saves you from a lethal fall (or the void)
+
+item.totemexpansion.totem_lava.name=Totem of Lava Protection
+item.totemexpansion.totem_head_lava.name=Totem of Lava Protection Head
+item.totemexpansion.totem_lava.desc=Saves you from accidental trips into lava
+
+item.totemexpansion.totem_breathing.name=Totem of Breath
+item.totemexpansion.totem_head_breathing.name=Totem of Breath Head
+item.totemexpansion.totem_breathing.desc=Saves you from the depths
+
+item.totemexpansion.totem_explode.name=Totem of Defusal
+item.totemexpansion.totem_head_explode.name=Totem of Defusal Head
+item.totemexpansion.totem_explode.desc=Defuses any explosions you are involved with
+
+item.totemexpansion.totem_repair.name=Totem of Repair
+item.totemexpansion.totem_head_repair.name=Totem of Repair Head
+item.totemexpansion.totem_repair.desc=Repairs a broken tool after it breaks
+
