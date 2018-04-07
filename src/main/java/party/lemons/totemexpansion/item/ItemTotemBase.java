@@ -56,7 +56,6 @@ public class ItemTotemBase extends ItemBase implements IBauble
 		stack.shrink(1);
 		living.clearActivePotions();
 
-
 		return false;
 	}
 

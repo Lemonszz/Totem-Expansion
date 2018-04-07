@@ -31,7 +31,7 @@ import java.util.Random;
  * Created by Sam on 6/04/2018.
  */
 @Mod.EventBusSubscriber(modid = ModConstants.MODID)
-public class MiscRegistry
+public class ModVillage
 {
 	@GameRegistry.ObjectHolder(ModConstants.MODID + ":witchdoctor")
 	public static VillagerRegistry.VillagerProfession WITCH_DOCTOR = null;
@@ -150,7 +150,6 @@ public class MiscRegistry
 			IBlockState iblockstate3 = this.getBiomeSpecificBlockState(Blocks.BIRCH_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.EAST));
 			IBlockState iblockstate4 = this.getBiomeSpecificBlockState(Blocks.PLANKS.getDefaultState()).withProperty(BlockPlanks.VARIANT, BlockPlanks.EnumType.SPRUCE);
 			IBlockState iblockstate5 = this.getBiomeSpecificBlockState(Blocks.BIRCH_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH));
-			IBlockState iblockstate6 = this.getBiomeSpecificBlockState(Blocks.COBBLESTONE_WALL.getDefaultState());
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 1, 7, 5, 4, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 0, 8, 0, 5, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 5, 0, 8, 5, 5, iblockstate, iblockstate, false);
@@ -205,7 +204,6 @@ public class MiscRegistry
 			this.setBlockState(worldIn, iblockstate1, 5, 1, 4, structureBoundingBoxIn);
 			this.setBlockState(worldIn, iblockstate1, 4, 1, 4, structureBoundingBoxIn);
 			this.setBlockState(worldIn, iblockstate1, 3, 1, 4, structureBoundingBoxIn);
-			this.setBlockState(worldIn, iblockstate6, 6, 1, 3, structureBoundingBoxIn);
 			this.setBlockState(worldIn, Blocks.CRAFTING_TABLE.getDefaultState(), 7, 1, 1, structureBoundingBoxIn);
 			this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 1, 1, 0, structureBoundingBoxIn);
 			this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 1, 2, 0, structureBoundingBoxIn);
