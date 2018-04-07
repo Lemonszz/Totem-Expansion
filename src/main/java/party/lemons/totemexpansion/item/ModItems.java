@@ -17,7 +17,7 @@ import party.lemons.totemexpansion.misc.CreativeTab;
 /**
  * Created by Sam on 6/04/2018.
  */
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ModConstants.MODID)
 @GameRegistry.ObjectHolder(ModConstants.MODID)
 public class ModItems
 {

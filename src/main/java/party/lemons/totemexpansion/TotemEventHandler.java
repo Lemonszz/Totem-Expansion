@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import party.lemons.totemexpansion.config.ModConstants;
 import party.lemons.totemexpansion.item.ItemTotemBase;
 import party.lemons.totemexpansion.item.ModItems;
 import party.lemons.totemexpansion.item.TotemType;
@@ -28,7 +29,7 @@ import java.util.Random;
 /**
  * Created by Sam on 6/04/2018.
  */
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ModConstants.MODID)
 public class TotemEventHandler
 {
 	@SubscribeEvent
