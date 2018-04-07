@@ -29,7 +29,6 @@ public class ClientModelRegistry
 				registerModel((Item & IModel)i);
 			}
 		});
-		//ModelLoader.setCustomModelResourceLocation(TOTEM_OF_UNDYING, 0, new ModelResourceLocation("minecraft:totem", "inventory"));
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -38,7 +37,6 @@ public class ClientModelRegistry
 		if(item == Items.AIR || !item.hasModel())
 			return;
 
-		System.out.println(item.getModelLocation() + " _______ " + item.getRegistryName());
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getModelLocation(), "inventory"));
 	}
 }
