@@ -7,6 +7,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
@@ -19,6 +20,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import party.lemons.totemexpansion.config.ModConfig;
 import party.lemons.totemexpansion.config.ModConstants;
 import party.lemons.totemexpansion.item.ModItems;
 
@@ -48,22 +50,41 @@ public class MiscRegistry
 		);
 
 		VillagerRegistry.VillagerCareer career = new VillagerRegistry.VillagerCareer(proff, "witch_doctor");
-		career.addTrade(1,
-				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_BASE, new EntityVillager.PriceInfo(1, 5)),
-				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_LAVA, new EntityVillager.PriceInfo(4, 12)),
-				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_PLUMMETING, new EntityVillager.PriceInfo(5, 15)),
-				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_UNDYING, new EntityVillager.PriceInfo(6, 12)),
-				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_BREATHING, new EntityVillager.PriceInfo(6, 12)),
-				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_EXPLODE, new EntityVillager.PriceInfo(6, 12)),
-				new EntityVillager.ListItemForEmeralds(ModItems.TOTEM_HEAD_REPAIR, new EntityVillager.PriceInfo(6, 12)),
-				new EntityVillager.ListItemForEmeralds(new ItemStack(Items.SKULL, 1, 0), new EntityVillager.PriceInfo(15, 39)),
-				new EntityVillager.ListItemForEmeralds(new ItemStack(Items.SKULL, 1, 4), new EntityVillager.PriceInfo(15, 39)),
-				new EntityVillager.ListItemForEmeralds(new ItemStack(Items.SKULL, 1, 2), new EntityVillager.PriceInfo(15, 39))
-		);
+		addTrade(career, ModItems.TOTEM_BASE, new EntityVillager.PriceInfo(1, 5));
+		addTrade(career, ModItems.TOTEM_HEAD_LAVA, new EntityVillager.PriceInfo(4, 12));
+		addTrade(career, ModItems.TOTEM_HEAD_PLUMMETING, new EntityVillager.PriceInfo(5, 15));
+		addTrade(career, ModItems.TOTEM_HEAD_UNDYING, new EntityVillager.PriceInfo(6, 12));
+		addTrade(career, ModItems.TOTEM_HEAD_BREATHING, new EntityVillager.PriceInfo(6, 12));
+		addTrade(career, ModItems.TOTEM_HEAD_REPAIR, new EntityVillager.PriceInfo(6, 12));
+		addSkullTrade(career, 0, new EntityVillager.PriceInfo(15, 39));
+		addSkullTrade(career, 1, new EntityVillager.PriceInfo(15, 39));
+		addSkullTrade(career, 4, new EntityVillager.PriceInfo(15, 39));
+
 		VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
 		MapGenStructureIO.registerStructureComponent(WitchDoctorHouse.class, ModConstants.MODID + ":witchdoctor");
 	}
 
+	public static void addTrade(VillagerRegistry.VillagerCareer career, Item item, EntityVillager.PriceInfo info)
+	{
+		for(String s : ModConfig.TRADE_BLACKLIST_HEADS)
+		{
+			if(s.equalsIgnoreCase(item.getRegistryName().toString()))
+				return;
+		}
+
+		career.addTrade(1, new EntityVillager.ListItemForEmeralds(item, info));
+	}
+
+	public static void addSkullTrade(VillagerRegistry.VillagerCareer career, int meta, EntityVillager.PriceInfo info)
+	{
+		for(int i : ModConfig.TRADE_BLACKLIST_SKULLS)
+		{
+			if(i == meta)
+				return;
+		}
+
+		career.addTrade(1, new EntityVillager.ListItemForEmeralds(new ItemStack(Items.SKULL, 1, meta), info));
+	}
 
 	private static class VillageCreationHandler implements VillagerRegistry.IVillageCreationHandler
 	{

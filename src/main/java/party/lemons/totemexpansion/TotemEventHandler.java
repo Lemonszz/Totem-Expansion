@@ -10,20 +10,25 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import party.lemons.totemexpansion.config.ModConfig;
 import party.lemons.totemexpansion.config.ModConstants;
 import party.lemons.totemexpansion.item.ItemTotemBase;
 import party.lemons.totemexpansion.item.ModItems;
 import party.lemons.totemexpansion.item.TotemType;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 /**
@@ -42,7 +47,7 @@ public class TotemEventHandler
 				ItemStack stack = findTotem(event.player, TotemType.FALL_DEATH);
 				if(!stack.isEmpty())
 				{
-					((ItemTotemBase) stack.getItem()).onActivate(event.player, stack, null);
+					activateTotem(event.player, stack, null);
 					return;
 				}
 			}
@@ -68,7 +73,7 @@ public class TotemEventHandler
 			ItemStack stack = findTotem((EntityPlayer) event.getEntityLiving(), TotemType.DAMAGE_LAVA);
 			if(!stack.isEmpty())
 			{
-				event.setCanceled(((ItemTotemBase)stack.getItem()).onActivate((EntityPlayer) event.getEntityLiving(), stack, event.getSource()));
+				event.setCanceled(activateTotem((EntityPlayer) event.getEntityLiving(), stack, event.getSource()));
 				return;
 			}
 		}
@@ -78,7 +83,7 @@ public class TotemEventHandler
 			ItemStack stack = findTotem((EntityPlayer) event.getEntityLiving(), TotemType.DAMAGE_DROWN);
 			if(!stack.isEmpty())
 			{
-				event.setCanceled(((ItemTotemBase)stack.getItem()).onActivate((EntityPlayer) event.getEntityLiving(), stack, event.getSource()));
+				event.setCanceled(activateTotem((EntityPlayer) event.getEntityLiving(), stack, event.getSource()));
 				return;
 			}
 		}
@@ -97,7 +102,7 @@ public class TotemEventHandler
 				ItemStack stack = findTotem(player, TotemType.FALL_DEATH);
 				if(!stack.isEmpty())
 				{
-					event.setCanceled(((ItemTotemBase)stack.getItem()).onActivate(player, stack, event.getSource()));
+					event.setCanceled(activateTotem(player, stack, event.getSource()));
 					return;
 				}
 			}
@@ -105,7 +110,7 @@ public class TotemEventHandler
 			ItemStack stack = findTotem(player, TotemType.DEATH);
 			if(!stack.isEmpty())
 			{
-				event.setCanceled(((ItemTotemBase) stack.getItem()).onActivate(player, stack, event.getSource()));
+				event.setCanceled(activateTotem(player, stack, event.getSource()));
 				return;
 			}
 		}
@@ -123,7 +128,7 @@ public class TotemEventHandler
 				ItemStack stack = findTotem(p, TotemType.EXPLODE);
 				if(!stack.isEmpty())
 				{
-					flag = ((ItemTotemBase) stack.getItem()).onActivate(p, stack, null);
+					flag = 	activateTotem(p, stack, null);
 					if(flag)
 						break;
 				}
@@ -146,7 +151,7 @@ public class TotemEventHandler
 			if(!stack.isEmpty())
 			{
 				//TODO create a real TotemResult or something?
-				boolean flag = ((ItemTotemBase) stack.getItem()).onActivate(event.getEntityPlayer(), stack, null);
+				boolean flag = activateTotem(event.getEntityPlayer(), stack, null);
 
 				if(flag)
 				{
@@ -166,7 +171,7 @@ public class TotemEventHandler
 		{
 			if(event.getSource().getTrueSource() instanceof EntityPlayer)
 			{
-				if(event.getEntityLiving().getRNG().nextInt(50 - (event.getLootingLevel() * 2)) == 1)
+				if(event.getEntityLiving().getRNG().nextInt(ModConfig.HEAD_DROP_RATE - (event.getLootingLevel() * ModConfig.HEAD_DROP_LOOTING_MODIFIER)) == 1)
 				{
 					ItemStack stack = new ItemStack(randomTotem(event.getEntityLiving().getRNG()));
 					EntityItem eI = new EntityItem(event.getEntity().world, event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, stack);
@@ -174,6 +179,15 @@ public class TotemEventHandler
 					event.getDrops().add(eI);
 				}
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void onConfigChanged(ConfigChangedEvent event)
+	{
+		if(event.getModID().equalsIgnoreCase(ModConstants.MODID))
+		{
+			ConfigManager.sync(ModConstants.MODID, Config.Type.INSTANCE);
 		}
 	}
 
@@ -188,7 +202,50 @@ public class TotemEventHandler
 				ModItems.TOTEM_HEAD_REPAIR
 		};
 
-		return items[r.nextInt(items.length)];
+		int c = 0;
+		Item it = items[r.nextInt(items.length)];
+		while(isTotemOnDropBlacklist(it) && c < 200)
+		{
+			it = items[r.nextInt(items.length)];
+			c++;
+		}
+
+		return it;
+	}
+
+	public static boolean activateTotem(EntityPlayer living, ItemStack stack, @Nullable DamageSource source)
+	{
+		if(isTotemBlacklisted(stack.getItem()))
+		{
+			return false;
+		}
+
+		return ((ItemTotemBase)stack.getItem()).onActivate(living, stack, source);
+	}
+
+	private static boolean isTotemBlacklisted(Item item)
+	{
+		if(item instanceof ItemTotemBase)
+		{
+			for(String s : ModConfig.TOTEM_BLACKLIST)
+			{
+				if(s.equalsIgnoreCase(item.getRegistryName().toString()))
+					return true;
+			}
+		}
+
+		return false;
+	}
+
+	private static boolean isTotemOnDropBlacklist(Item i)
+	{
+		for(String s : ModConfig.TOTEM_HEAD_DROP_BLACKLIST)
+		{
+			if(s.equalsIgnoreCase(i.getRegistryName().toString()))
+				return true;
+		}
+
+		return false;
 	}
 
 	public static ItemStack findTotem(EntityPlayer player, TotemType type)
