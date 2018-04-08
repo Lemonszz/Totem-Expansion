@@ -65,6 +65,9 @@ public class ModConfig
 	@Config.RangeInt(min = 1)
 	public static int SPELUNKING_UPDATE_TIME = 20;
 
+	@Config.Name("Render Bauble On Player")
+	public static boolean RENDER_BAUBLE = true;
+
 	@Config.Ignore
 	public static List<Block> ORES = new ArrayList<>();
 }

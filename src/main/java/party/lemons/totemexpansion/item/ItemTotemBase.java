@@ -2,11 +2,16 @@ package party.lemons.totemexpansion.item;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import baubles.api.render.IRenderBauble;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
@@ -17,9 +22,8 @@ import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import party.lemons.totemexpansion.TotemExpansion;
-import party.lemons.totemexpansion.config.ModConstants;
-import party.lemons.totemexpansion.misc.CreativeTab;
-import party.lemons.totemexpansion.misc.IModel;
+import party.lemons.totemexpansion.config.ModConfig;
+
 import party.lemons.totemexpansion.network.MessageItemEffect;
 
 import javax.annotation.Nullable;
@@ -29,7 +33,8 @@ import java.util.List;
  * Created by Sam on 6/04/2018.
  */
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "baubles")
-public class ItemTotemBase extends ItemBase implements IBauble
+@Optional.Interface(iface = "baubles.api.render.IRenderBauble", modid = "baubles")
+public class ItemTotemBase extends ItemBase implements IBauble, IRenderBauble
 {
 	private TotemType type;
 
@@ -85,5 +90,21 @@ public class ItemTotemBase extends ItemBase implements IBauble
 	public BaubleType getBaubleType(ItemStack itemStack)
 	{
 		return BaubleType.CHARM;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void onPlayerBaubleRender(ItemStack itemStack, EntityPlayer entityPlayer, RenderType renderType, float v)
+	{
+		if(!ModConfig.RENDER_BAUBLE || renderType != RenderType.BODY)
+			return;
+
+		double outAmount = !entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.CHEST).isEmpty() ? -0.2F : -0.13D;
+
+		IRenderBauble.Helper.rotateIfSneaking(entityPlayer);
+		GlStateManager.translate(-0.15D, 0.3D, outAmount);
+		GlStateManager.rotate(180F,-0.0F, 0F, 1F);
+		GlStateManager.scale(0.2D, 0.2D, 0.2D);
+		Minecraft.getMinecraft().getRenderItem().renderItem(itemStack, ItemCameraTransforms.TransformType.NONE);
 	}
 }
