@@ -1,7 +1,8 @@
-package party.lemons.totemexpansion;
+package party.lemons.totemexpansion.handler;
 
 import baubles.api.BaublesApi;
 import baubles.api.cap.IBaublesItemHandler;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.IMob;
@@ -11,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -23,11 +25,13 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import party.lemons.totemexpansion.config.ModConfig;
 import party.lemons.totemexpansion.config.ModConstants;
 import party.lemons.totemexpansion.item.ItemTotemBase;
 import party.lemons.totemexpansion.item.ModItems;
 import party.lemons.totemexpansion.item.TotemType;
+import party.lemons.totemexpansion.misc.TotemUtil;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -189,6 +193,7 @@ public class TotemEventHandler
 		if(event.getModID().equalsIgnoreCase(ModConstants.MODID))
 		{
 			ConfigManager.sync(ModConstants.MODID, Config.Type.INSTANCE);
+			TotemUtil.updateOreCache();
 		}
 	}
 

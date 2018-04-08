@@ -1,6 +1,8 @@
 entity.Villager.witch_doctor=Witch Doctor
 itemGroup.totemexpansion=Totem Expansion
 
+effects.totemexpansion.spelunking=Spelunking
+
 item.totem.desc=Revives you from the dead
 item.totemexpansion.totem_head_undying.name=Totem of Undying Head
 
@@ -26,4 +28,8 @@ item.totemexpansion.totem_explode.desc=Defuses any explosions you are involved w
 item.totemexpansion.totem_repair.name=Totem of Repairing
 item.totemexpansion.totem_head_repair.name=Totem of Repairing Head
 item.totemexpansion.totem_repair.desc=Repairs a broken tool after it breaks
+
+item.totemexpansion.totem_spelunking.name=Totem of Spelunking
+item.totemexpansion.totem_head_spelunking.name=Totem of Spelunking Head
+item.totemexpansion.totem_spelunking.desc=Allows you to detect ores around you
 

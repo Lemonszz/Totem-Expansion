@@ -56,6 +56,7 @@ public class ModVillage
 		addTrade(career, ModItems.TOTEM_HEAD_UNDYING, new EntityVillager.PriceInfo(6, 12));
 		addTrade(career, ModItems.TOTEM_HEAD_BREATHING, new EntityVillager.PriceInfo(6, 12));
 		addTrade(career, ModItems.TOTEM_HEAD_REPAIR, new EntityVillager.PriceInfo(6, 12));
+		addTrade(career, ModItems.TOTEM_HEAD_SPELUNKING, new EntityVillager.PriceInfo(6, 12));
 		addSkullTrade(career, 0, new EntityVillager.PriceInfo(15, 39));
 		addSkullTrade(career, 1, new EntityVillager.PriceInfo(15, 39));
 		addSkullTrade(career, 4, new EntityVillager.PriceInfo(15, 39));

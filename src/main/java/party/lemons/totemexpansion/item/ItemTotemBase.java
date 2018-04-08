@@ -10,8 +10,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
@@ -57,6 +56,17 @@ public class ItemTotemBase extends ItemBase implements IBauble
 		living.clearActivePotions();
 
 		return false;
+	}
+
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
+	{
+		if(type == TotemType.ACTIVATE)
+		{
+			onActivate(playerIn, playerIn.getHeldItem(handIn), null);
+			return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+		}
+
+		return new ActionResult<>(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
 	}
 
 	@SideOnly(Side.CLIENT)

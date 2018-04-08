@@ -2,10 +2,12 @@ package party.lemons.totemexpansion;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import party.lemons.totemexpansion.config.ModConstants;
+import party.lemons.totemexpansion.misc.TotemUtil;
 import party.lemons.totemexpansion.network.Messages;
 import party.lemons.totemexpansion.proxy.IProxy;
 
@@ -24,5 +26,11 @@ public class TotemExpansion
 	public static void preInit(FMLPreInitializationEvent event)
 	{
 		Messages.init();
+	}
+
+	@Mod.EventHandler
+	public static void loadComplete(FMLLoadCompleteEvent event)
+	{
+		TotemUtil.updateOreCache();
 	}
 }

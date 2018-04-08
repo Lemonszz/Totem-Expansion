@@ -1,6 +1,10 @@
 package party.lemons.totemexpansion.config;
 
+import net.minecraft.block.Block;
 import net.minecraftforge.common.config.Config;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Sam on 7/04/2018.
@@ -19,28 +23,48 @@ public class ModConfig
 	@Config.RequiresMcRestart
 	@Config.Name("Totem Head Trade Blacklist")
 	@Config.Comment("Totem heads on this list will NOT be added to trades")
-	public static String[] TRADE_BLACKLIST_HEADS = new String[]
-			{
-			};
+	public static String[] TRADE_BLACKLIST_HEADS = new String[]{};
 
 	@Config.RequiresMcRestart
-	@Config.Name("Mob Head Trades")
+	@Config.Name("Mob Head Trades Blacklist")
 	@Config.Comment("Values are metadata of minecraft:skull, values on this list will NOT be added to trades")
-	public static int[] TRADE_BLACKLIST_SKULLS = new int[]
-			{
+	public static int[] TRADE_BLACKLIST_SKULLS = new int[]{
 
-			};
+	};
 
 	@Config.Name("Totem Head Drop Blacklist")
 	@Config.Comment("Totems on this list will not be dropped by mobs")
-	public static String[] TOTEM_HEAD_DROP_BLACKLIST = new String[]
-			{
-			};
+	public static String[] TOTEM_HEAD_DROP_BLACKLIST = new String[]{};
 
 	@Config.Name("Totem Blacklist")
 	@Config.Comment("Totems on this list will not activate")
-	public static String[] TOTEM_BLACKLIST = new String[]
-			{
+	public static String[] TOTEM_BLACKLIST = new String[]{
 
-			};
+	};
+
+	@Config.Name("Totem of Spelunking Ores")
+	@Config.Comment("Ores that can be found via the Totem of Spelunking")
+	public static String[] TOTEM_OF_SPELUNKING_ORES = new String[]{
+			"minecraft:iron_ore",
+			"minecraft:coal_ore",
+			"minecraft:gold_ore",
+			"minecraft:diamond_ore",
+			"minecraft:emerald_ore",
+			"minecraft:lapis_ore",
+			"minecraft:redstone_ore",
+			"minecraft:lit_redstone_ore",
+			"minecraft:quartz_ore"
+	};
+
+	@Config.Name("Spelunking Range")
+	@Config.RangeInt(min = 1)
+	public static int SPELUNKING_RANGE = 5;
+
+	@Config.Name("Spelunking Cache Time")
+	@Config.Comment("How many ticks until the ore cache is remade, lower = faster updates")
+	@Config.RangeInt(min = 1)
+	public static int SPELUNKING_UPDATE_TIME = 20;
+
+	@Config.Ignore
+	public static List<Block> ORES = new ArrayList<>();
 }

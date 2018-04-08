@@ -63,6 +63,12 @@ public class ModItems
 	@GameRegistry.ObjectHolder("totem_head_repair")
 	public static final Item TOTEM_HEAD_REPAIR = Items.AIR;
 
+	@GameRegistry.ObjectHolder("totem_spelunking")
+	public static final Item TOTEM_SPELUNKING = Items.AIR;
+
+	@GameRegistry.ObjectHolder("totem_head_spelunking")
+	public static final Item TOTEM_HEAD_SPELUNKING = Items.AIR;
+
 	@SubscribeEvent
 	public static void onRegisterItem(RegistryEvent.Register<Item> event)
 	{
@@ -73,13 +79,15 @@ public class ModItems
 				new ItemTotemBreathing(),
 				new ItemTotemExplode(),
 				new ItemTotemRepair(),
+				new ItemTotemSpelunking(),
 				new ItemBase("totem_base"),
 				new ItemBase("totem_head_undying"),
 				new ItemBase("totem_head_plummeting"),
 				new ItemBase("totem_head_lava"),
 				new ItemBase("totem_head_breathing"),
 				new ItemBase("totem_head_explode"),
-				new ItemBase("totem_head_repair")
+				new ItemBase("totem_head_repair"),
+				new ItemBase("totem_head_spelunking")
 		);
 	}
 
