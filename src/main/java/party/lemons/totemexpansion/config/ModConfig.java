@@ -1,6 +1,7 @@
 package party.lemons.totemexpansion.config;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraftforge.common.config.Config;
 
 import java.util.ArrayList;
@@ -45,15 +46,42 @@ public class ModConfig
 	@Config.Name("Totem of Spelunking Ores")
 	@Config.Comment("Ores that can be found via the Totem of Spelunking")
 	public static String[] TOTEM_OF_SPELUNKING_ORES = new String[]{
-			"minecraft:iron_ore",
-			"minecraft:coal_ore",
-			"minecraft:gold_ore",
-			"minecraft:diamond_ore",
-			"minecraft:emerald_ore",
-			"minecraft:lapis_ore",
-			"minecraft:redstone_ore",
-			"minecraft:lit_redstone_ore",
-			"minecraft:quartz_ore"
+			"oreIron",
+			"oreGold",
+			"oreDiamond",
+			"oreEmerald",
+			"oreCoal",
+			"oreLapis",
+			"oreRedstone",
+			"oreQuartz",
+			"oreBauxite",
+			"oreCinnabar",
+			"oreCopper",
+			"oreGalena",
+			"oreIridium",
+			"oreLead",
+			"orePeridot",
+			"orePetroleum",
+			"orePlatinum",
+			"orePyrite",
+			"oreRuby",
+			"oreSapphire",
+			"oreSheldonite",
+			"oreSilver",
+			"oreSodalite",
+			"oreSphalerite",
+			"oreSulfur",
+			"oreTetrahedrite",
+			"oreTin",
+			"oreTitanium",
+			"oreTungsten",
+			"oreUranium",
+			"oreInfusedAir",
+			"oreInfusedFire",
+			"oreInfusedWater",
+			"oreInfusedEarth",
+			"oreInfusedOrder",
+			"oreInfusedEntropy"
 	};
 
 	@Config.Name("Spelunking Range")
