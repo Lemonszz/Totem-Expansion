@@ -43,9 +43,9 @@ public class ModConfig
 
 	};
 
-	@Config.Name("Totem of Spelunking Ores")
+	@Config.Name("Totem of Spelunking Ore Dictionary")
 	@Config.Comment("Ores that can be found via the Totem of Spelunking")
-	public static String[] TOTEM_OF_SPELUNKING_ORES = new String[]{
+	public static String[] TOTEM_OF_SPELUNKING_ORES_DICT = new String[]{
 			"oreIron",
 			"oreGold",
 			"oreDiamond",

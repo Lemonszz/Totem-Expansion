@@ -20,7 +20,7 @@ public class TotemUtil
 	{
 		ModConfig.ORES.clear();
 
-		for(String s : ModConfig.TOTEM_OF_SPELUNKING_ORES)
+		for(String s : ModConfig.TOTEM_OF_SPELUNKING_ORES_DICT)
 		{
 			NonNullList<ItemStack> blocks = OreDictionary.getOres(s);
 			for(ItemStack stack : blocks)
