@@ -100,12 +100,12 @@ public class ItemTotemBase extends ItemBase implements IBauble, IRenderBauble
 		if(!ModConfig.RENDER_BAUBLE || renderType != RenderType.BODY)
 			return;
 
-		double outAmount = !entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.CHEST).isEmpty() ? -0.2F : -0.13D;
+		double outAmount = !entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.CHEST).isEmpty() ? -0.2F : -0.14D;
 
 		IRenderBauble.Helper.rotateIfSneaking(entityPlayer);
 		GlStateManager.translate(-0.15D, 0.3D, outAmount);
 		GlStateManager.rotate(180F,-0.0F, 0F, 1F);
-		GlStateManager.scale(0.2D, 0.2D, 0.2D);
+		GlStateManager.scale(0.23D, 0.23D, 0.23D);
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemStack, ItemCameraTransforms.TransformType.NONE);
 	}
 }
