@@ -92,11 +92,8 @@ public class TotemRenderEventHandler
 	}
 
 	@SubscribeEvent
-	public static void onWorldTickClient(TickEvent.WorldTickEvent event)
+	public static void onClientTick(TickEvent.ClientTickEvent event)
 	{
-		if(event.world.provider.getDimension() != 0)
-			return;
-
 		if(itemInst != null)
 			itemInst.onUpdate();
 	}
