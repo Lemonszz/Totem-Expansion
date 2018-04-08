@@ -24,6 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import party.lemons.totemexpansion.TotemExpansion;
 import party.lemons.totemexpansion.config.ModConfig;
 
+import party.lemons.totemexpansion.handler.TotemEventHandler;
 import party.lemons.totemexpansion.network.MessageItemEffect;
 
 import javax.annotation.Nullable;
@@ -67,7 +68,7 @@ public class ItemTotemBase extends ItemBase implements IBauble, IRenderBauble
 	{
 		if(type == TotemType.ACTIVATE)
 		{
-			onActivate(playerIn, playerIn.getHeldItem(handIn), null);
+			TotemEventHandler.activateTotem(playerIn, playerIn.getHeldItem(handIn), null);
 			return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
 		}
 
