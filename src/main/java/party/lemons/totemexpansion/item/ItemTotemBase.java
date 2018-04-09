@@ -47,6 +47,14 @@ public class ItemTotemBase extends ItemBase implements IBauble, IRenderBauble
 		this.setMaxStackSize(1);
 	}
 
+	/**
+	 * Called when totem is activated
+	 * MUST BE ABLE TO HANDLE DAMAGE SOURCE BEING NULL
+	 * @param living
+	 * @param stack
+	 * @param source
+	 * @return bool
+	 */
 	public boolean onActivate(EntityPlayer living, ItemStack stack, @Nullable DamageSource source)
 	{
 		if (!living.world.isRemote && living instanceof EntityPlayerMP)
