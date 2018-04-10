@@ -15,6 +15,7 @@ public class TickerTime implements ITicker
 
 	private long target;
 
+	public TickerTime(World world){}
 	public TickerTime(long target, World world)
 	{
 		this.target = target + world.getWorldTime();
