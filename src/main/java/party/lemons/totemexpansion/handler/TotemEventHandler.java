@@ -1,11 +1,15 @@
 package party.lemons.totemexpansion.handler;
 
+import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.cap.IBaublesItemHandler;
+import baubles.common.network.PacketHandler;
+import baubles.common.network.PacketSync;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,6 +20,7 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -223,7 +228,14 @@ public class TotemEventHandler
 			return false;
 		}
 
-		return ((ItemTotemBase)stack.getItem()).onActivate(living, stack, source);
+		boolean result = ((ItemTotemBase)stack.getItem()).onActivate(living, stack, source);
+
+		if(Loader.isModLoaded("baubles"))
+		{
+			PacketHandler.INSTANCE.sendToAllTracking(new PacketSync(living, BaubleType.CHARM.ordinal(), stack), living);
+			PacketHandler.INSTANCE.sendTo(new PacketSync(living, BaubleType.CHARM.ordinal(), stack), (EntityPlayerMP) living);
+		}
+		return result;
 	}
 
 	private static boolean isTotemBlacklisted(Item item)
