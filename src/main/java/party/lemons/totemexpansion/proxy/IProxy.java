@@ -9,4 +9,6 @@ import net.minecraft.item.ItemStack;
 public interface IProxy
 {
 	void playActivateAnimation(ItemStack stack, Entity entity);
+
+	void initTickers();
 }

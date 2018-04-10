@@ -1,18 +1,15 @@
 package party.lemons.totemexpansion.item;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistry;
 import party.lemons.totemexpansion.config.ModConstants;
-import party.lemons.totemexpansion.misc.CreativeTab;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,26 +66,31 @@ public class ModItems
 	@GameRegistry.ObjectHolder("totem_head_spelunking")
 	public static final Item TOTEM_HEAD_SPELUNKING = Items.AIR;
 
+	@GameRegistry.ObjectHolder("totem_time")
+	public static final Item TOTEM_TIME= Items.AIR;
+
+	@GameRegistry.ObjectHolder("totem_head_time")
+	public static final Item TOTEM_HEAD_TIME = Items.AIR;
+
 	@SubscribeEvent
 	public static void onRegisterItem(RegistryEvent.Register<Item> event)
 	{
-		event.getRegistry().registerAll(
-				new ItemTotemUndying().setUnlocalizedName("totem"),
-				new ItemTotemFalling(),
-				new ItemTotemLava(),
-				new ItemTotemBreathing(),
-				new ItemTotemExplode(),
-				new ItemTotemRepair(),
-				new ItemTotemSpelunking(),
-				new ItemBase("totem_base"),
-				new ItemBase("totem_head_undying"),
-				new ItemBase("totem_head_plummeting"),
-				new ItemBase("totem_head_lava"),
-				new ItemBase("totem_head_breathing"),
-				new ItemBase("totem_head_explode"),
-				new ItemBase("totem_head_repair"),
-				new ItemBase("totem_head_spelunking")
-		);
+		IForgeRegistry<Item> r = event.getRegistry();
+		registerTotem(r, new ItemTotemUndying(), "undying");
+		registerTotem(r, new ItemTotemFalling(), "plummeting");
+		registerTotem(r, new ItemTotemLava(), "lava");
+		registerTotem(r, new ItemTotemBreathing(), "breathing");
+		registerTotem(r, new ItemTotemExplode(), "explode");
+		registerTotem(r, new ItemTotemRepair(), "repair");
+		registerTotem(r, new ItemTotemSpelunking(), "spelunking");
+		registerTotem(r, new ItemTotemTime(), "time");
+
+		r.register(new ItemBase("totem_base"));
+	}
+
+	private static void registerTotem(IForgeRegistry<Item> registry, ItemTotemBase totem, String name)
+	{
+		registry.registerAll(totem, new ItemBase("totem_head_" + name));
 	}
 
 	public static List<Item> itemList = new ArrayList<>();

@@ -29,4 +29,10 @@ public class ItemTotemFalling extends ItemTotemBase
 		living.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 900, 2));
 		return true;
 	}
+
+	@Override
+	public boolean clearPotions()
+	{
+		return true;
+	}
 }

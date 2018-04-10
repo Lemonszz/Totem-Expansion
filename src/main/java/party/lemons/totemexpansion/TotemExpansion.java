@@ -28,6 +28,7 @@ public class TotemExpansion
 	public static void preInit(FMLPreInitializationEvent event)
 	{
 		Messages.init();
+		proxy.initTickers();
 	}
 
 	@Mod.EventHandler

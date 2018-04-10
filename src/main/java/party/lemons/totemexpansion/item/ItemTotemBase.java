@@ -24,7 +24,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import party.lemons.totemexpansion.TotemExpansion;
 import party.lemons.totemexpansion.config.ModConfig;
 
+import party.lemons.totemexpansion.config.ModConstants;
 import party.lemons.totemexpansion.handler.TotemEventHandler;
+import party.lemons.totemexpansion.handler.ticker.TickerHandler;
+import party.lemons.totemexpansion.handler.ticker.TickerTime;
 import party.lemons.totemexpansion.network.MessageItemEffect;
 
 import javax.annotation.Nullable;
@@ -67,7 +70,9 @@ public class ItemTotemBase extends ItemBase implements IBauble, IRenderBauble
 		}
 
 		stack.shrink(1);
-		living.clearActivePotions();
+
+		if(clearPotions())
+			living.clearActivePotions();
 
 		return false;
 	}
@@ -87,6 +92,11 @@ public class ItemTotemBase extends ItemBase implements IBauble, IRenderBauble
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
 	{
 		tooltip.add(TextFormatting.DARK_PURPLE + I18n.format(this.getUnlocalizedName() + ".desc"));
+	}
+
+	public boolean clearPotions()
+	{
+		return false;
 	}
 
 	public TotemType getType()

@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "totemexpansion:items/totem",
+    "layer1": "totemexpansion:items/eyes"
+  }
+}

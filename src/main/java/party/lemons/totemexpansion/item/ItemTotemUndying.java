@@ -15,6 +15,7 @@ public class ItemTotemUndying extends ItemTotemBase
 	public ItemTotemUndying()
 	{
 		super("minecraft:totem_of_undying", TotemType.DEATH);
+		setUnlocalizedName("totem");
 	}
 
 	public boolean onActivate(EntityPlayer living, ItemStack stack, DamageSource source)
@@ -23,9 +24,14 @@ public class ItemTotemUndying extends ItemTotemBase
 
 
 		living.setHealth(1.0F);
-		living.clearActivePotions();
 		living.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 900, 1));
 		living.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 100, 1));
+		return true;
+	}
+
+	@Override
+	public boolean clearPotions()
+	{
 		return true;
 	}
 

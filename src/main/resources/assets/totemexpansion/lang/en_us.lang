@@ -1,12 +1,18 @@
 entity.Villager.witch_doctor=Witch Doctor
 itemGroup.totemexpansion=Totem Expansion
 
+commands.totem.usage=/totem [player] [item]
+commands.totemeffect.useage=/totem [player] [item]
+commands.totem.success=Gave player effect
+commands.totemeffect.success=Gave player effect
+command.totem.nototem=Invalid totem
+
 effects.totemexpansion.spelunking=Spelunking
 
-item.totem.desc=Revives you from the dead
-item.totemexpansion.totem_head_undying.name=Totem of Undying Head
-
 item.totemexpansion.totem_base.name=Totem Base
+
+item.totemexpansion.totem_head_undying.name=Totem of Undying Head
+item.totem.desc=Revives you from the dead
 
 item.totemexpansion.totem_falling.name=Totem of Ascending
 item.totemexpansion.totem_head_plummeting.name=Totem of Ascending Head
@@ -32,3 +38,6 @@ item.totemexpansion.totem_spelunking.name=Totem of Spelunking
 item.totemexpansion.totem_head_spelunking.name=Totem of Spelunking Head
 item.totemexpansion.totem_spelunking.desc=Grants the ability to detect ores around you
 
+item.totemexpansion.totem_time.name=Totem of [Something]
+item.totemexpansion.totem_head_time.name=Totem of [Something] Head
+item.totemexpansion.totem_time.desc=Advances time forward

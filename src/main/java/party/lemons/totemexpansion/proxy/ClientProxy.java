@@ -26,4 +26,10 @@ public class ClientProxy implements IProxy
 			mc.entityRenderer.displayItemActivation(stack);
 		}
 	}
+
+	@Override
+	public void initTickers()
+	{
+
+	}
 }
