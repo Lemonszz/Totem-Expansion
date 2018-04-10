@@ -1,11 +1,8 @@
 package party.lemons.totemexpansion.misc;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 import party.lemons.totemexpansion.config.ModConfig;
 
@@ -29,7 +26,6 @@ public class TotemUtil
 				{
 					ItemBlock ib = (ItemBlock) stack.getItem();
 					ModConfig.ORES.add(ib.getBlock());
-
 				}
 
 			}

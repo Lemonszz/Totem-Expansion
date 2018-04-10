@@ -1,7 +1,6 @@
 package party.lemons.totemexpansion.config;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraftforge.common.config.Config;
 
 import java.util.ArrayList;

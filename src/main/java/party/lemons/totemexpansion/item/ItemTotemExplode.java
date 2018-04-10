@@ -3,7 +3,6 @@ package party.lemons.totemexpansion.item;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 
 /**
  * Created by Sam on 6/04/2018.

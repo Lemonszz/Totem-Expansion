@@ -12,7 +12,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
@@ -24,10 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import party.lemons.totemexpansion.TotemExpansion;
 import party.lemons.totemexpansion.config.ModConfig;
 
-import party.lemons.totemexpansion.config.ModConstants;
 import party.lemons.totemexpansion.handler.TotemEventHandler;
-import party.lemons.totemexpansion.handler.ticker.TickerHandler;
-import party.lemons.totemexpansion.handler.ticker.TickerTime;
 import party.lemons.totemexpansion.network.MessageItemEffect;
 
 import javax.annotation.Nullable;

@@ -3,7 +3,6 @@ package party.lemons.totemexpansion.handler.ticker;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketTimeUpdate;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 /**

@@ -1,11 +1,8 @@
 package party.lemons.totemexpansion.handler.client;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -14,7 +11,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import party.lemons.totemexpansion.config.ModConstants;
-import party.lemons.totemexpansion.item.ItemColoredBase;
 import party.lemons.totemexpansion.item.ModItems;
 import party.lemons.totemexpansion.misc.IColor;
 import party.lemons.totemexpansion.misc.IModel;

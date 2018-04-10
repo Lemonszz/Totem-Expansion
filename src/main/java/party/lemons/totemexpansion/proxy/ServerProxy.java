@@ -1,7 +1,5 @@
 package party.lemons.totemexpansion.proxy;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
 import party.lemons.totemexpansion.handler.ticker.Tickers;
 
 /**
@@ -9,12 +7,6 @@ import party.lemons.totemexpansion.handler.ticker.Tickers;
  */
 public class ServerProxy implements IProxy
 {
-	@Override
-	public void playActivateAnimation(ItemStack stack, Entity entity)
-	{
-
-	}
-
 	@Override
 	public void initTickers()
 	{
