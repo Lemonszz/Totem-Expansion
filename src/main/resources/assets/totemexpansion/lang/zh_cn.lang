@@ -1,5 +1,5 @@
 entity.Villager.witch_doctor=巫师
-itemGroup.totemexpansion=图腾扩展
+itemGroup.totemexpansion=更多图腾
 
 commands.totem.usage=/totem [玩家] [物品]
 commands.totemeffect.useage=/totem [玩家] [物品]
