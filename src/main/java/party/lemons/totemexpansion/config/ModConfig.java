@@ -12,7 +12,7 @@ import java.util.List;
 @Config(modid = ModConstants.MODID)
 public class ModConfig
 {
-	@Config.RangeInt(min = 0)
+	@Config.RangeInt(min = 1)
 	@Config.Name("Head Drop Rate")
 	public static int HEAD_DROP_RATE = 50;
 

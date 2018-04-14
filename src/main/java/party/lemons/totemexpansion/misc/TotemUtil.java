@@ -39,7 +39,6 @@ public class TotemUtil
 					ItemBlock ib = (ItemBlock) stack.getItem();
 					ModConfig.ORES.add(ib.getBlock());
 				}
-
 			}
 		}
 	}

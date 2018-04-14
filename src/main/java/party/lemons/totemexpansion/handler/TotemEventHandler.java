@@ -11,9 +11,11 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundCategory;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -34,6 +36,7 @@ import party.lemons.totemexpansion.item.TotemType;
 import party.lemons.totemexpansion.misc.TotemUtil;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 /**
  * Created by Sam on 6/04/2018.
@@ -172,11 +175,14 @@ public class TotemEventHandler
 		{
 			if(event.getSource().getTrueSource() instanceof EntityPlayer)
 			{
-				if(event.getEntityLiving().getRNG().nextInt(ModConfig.HEAD_DROP_RATE - (event.getLootingLevel() * ModConfig.HEAD_DROP_LOOTING_MODIFIER)) == 1)
+				Random rand = event.getEntityLiving().getRNG();
+				int weaponChance = rand.nextInt(Math.max(1, ModConfig.HEAD_DROP_RATE - (event.getLootingLevel() * ModConfig.HEAD_DROP_LOOTING_MODIFIER)));
+				int chance = Math.max(0, weaponChance);
+
+				if(chance == 0)
 				{
 					ItemStack stack = new ItemStack(TotemUtil.randomTotemHead(event.getEntityLiving().getRNG()));
 					EntityItem eI = new EntityItem(event.getEntity().world, event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, stack);
-
 					event.getDrops().add(eI);
 				}
 			}
