@@ -72,6 +72,12 @@ public class ModItems
 	@GameRegistry.ObjectHolder("totem_head_time")
 	public static final Item TOTEM_HEAD_TIME = Items.AIR;
 
+	@GameRegistry.ObjectHolder("totem_recalling")
+	public static final Item TOTEM_RECALL = Items.AIR;
+
+	@GameRegistry.ObjectHolder("totem_head_recalling")
+	public static final Item TOTEM_HEAD_RECALLING= Items.AIR;
+
 	@SubscribeEvent
 	public static void onRegisterItem(RegistryEvent.Register<Item> event)
 	{
@@ -84,13 +90,14 @@ public class ModItems
 		registerTotem(r, new ItemTotemRepair(), "repair");
 		registerTotem(r, new ItemTotemSpelunking(), "spelunking");
 		registerTotem(r, new ItemTotemTime(), "time");
+		registerTotem(r, new ItemTotemRecall(), "recalling");
 
 		r.register(new ItemBase("totem_base"));
 	}
 
 	private static void registerTotem(IForgeRegistry<Item> registry, ItemTotemBase totem, String name)
 	{
-		registry.registerAll(totem, new ItemBase("totem_head_" + name));
+		registry.registerAll(totem, new ItemTotemHead("totem_head_" + name));
 	}
 
 	public static List<Item> itemList = new ArrayList<>();

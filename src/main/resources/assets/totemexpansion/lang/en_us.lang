@@ -38,6 +38,10 @@ item.totemexpansion.totem_spelunking.name=Totem of Spelunking
 item.totemexpansion.totem_head_spelunking.name=Totem of Spelunking Head
 item.totemexpansion.totem_spelunking.desc=Grants the ability to detect ores around you
 
-item.totemexpansion.totem_time.name=Totem of [Something]
-item.totemexpansion.totem_head_time.name=Totem of [Something] Head
+item.totemexpansion.totem_time.name=Totem of Advancing
+item.totemexpansion.totem_head_time.name=Totem of Advancing Head
 item.totemexpansion.totem_time.desc=Advances time forward
+
+item.totemexpansion.totem_recalling.name=Totem of Recalling
+item.totemexpansion.totem_head_recalling.name=Totem of Recalling Head
+item.totemexpansion.totem_recalling.desc=Sends you back home

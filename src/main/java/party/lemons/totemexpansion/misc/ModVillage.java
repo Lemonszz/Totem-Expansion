@@ -51,12 +51,14 @@ public class ModVillage
 
 		VillagerRegistry.VillagerCareer career = new VillagerRegistry.VillagerCareer(proff, "witch_doctor");
 		addTrade(career, ModItems.TOTEM_BASE, new EntityVillager.PriceInfo(1, 5));
-		addTrade(career, ModItems.TOTEM_HEAD_LAVA, new EntityVillager.PriceInfo(4, 12));
-		addTrade(career, ModItems.TOTEM_HEAD_PLUMMETING, new EntityVillager.PriceInfo(5, 15));
-		addTrade(career, ModItems.TOTEM_HEAD_UNDYING, new EntityVillager.PriceInfo(6, 12));
-		addTrade(career, ModItems.TOTEM_HEAD_BREATHING, new EntityVillager.PriceInfo(6, 12));
-		addTrade(career, ModItems.TOTEM_HEAD_REPAIR, new EntityVillager.PriceInfo(6, 12));
-		addTrade(career, ModItems.TOTEM_HEAD_SPELUNKING, new EntityVillager.PriceInfo(6, 12));
+		addTrade(career, ModItems.TOTEM_HEAD_LAVA, new EntityVillager.PriceInfo(4, 20));
+		addTrade(career, ModItems.TOTEM_HEAD_PLUMMETING, new EntityVillager.PriceInfo(5, 20));
+		addTrade(career, ModItems.TOTEM_HEAD_UNDYING, new EntityVillager.PriceInfo(6, 20));
+		addTrade(career, ModItems.TOTEM_HEAD_BREATHING, new EntityVillager.PriceInfo(6, 20));
+		addTrade(career, ModItems.TOTEM_HEAD_REPAIR, new EntityVillager.PriceInfo(6, 20));
+		addTrade(career, ModItems.TOTEM_HEAD_SPELUNKING, new EntityVillager.PriceInfo(6, 20));
+		addTrade(career, ModItems.TOTEM_HEAD_TIME, new EntityVillager.PriceInfo(6, 20));
+		addTrade(career, ModItems.TOTEM_HEAD_RECALLING, new EntityVillager.PriceInfo(12, 30));
 		addSkullTrade(career, 0, new EntityVillager.PriceInfo(15, 39));
 		addSkullTrade(career, 1, new EntityVillager.PriceInfo(15, 39));
 		addSkullTrade(career, 4, new EntityVillager.PriceInfo(15, 39));

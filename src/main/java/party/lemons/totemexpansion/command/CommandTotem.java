@@ -81,8 +81,6 @@ public class CommandTotem extends CommandBase
 			return getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames());
 		}else if(args.length == 2)
 		{
-			System.out.println(getListOfTotemString());
-
 			return getListOfTotemString();
 		}
 

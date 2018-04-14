@@ -29,14 +29,18 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import party.lemons.totemexpansion.config.ModConfig;
 import party.lemons.totemexpansion.config.ModConstants;
 import party.lemons.totemexpansion.item.ItemTotemBase;
+import party.lemons.totemexpansion.item.ItemTotemHead;
 import party.lemons.totemexpansion.item.ModItems;
 import party.lemons.totemexpansion.item.TotemType;
 import party.lemons.totemexpansion.misc.TotemUtil;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -75,24 +79,20 @@ public class TotemEventHandler
 		if(!(event.getEntityLiving() instanceof EntityPlayer))
 			return;
 
-		//TODO: fix dupe code
-		if(event.getSource() == DamageSource.LAVA)
-		{
-			ItemStack stack = findTotem((EntityPlayer) event.getEntityLiving(), TotemType.DAMAGE_LAVA);
-			if(!stack.isEmpty())
-			{
-				event.setCanceled(activateTotem((EntityPlayer) event.getEntityLiving(), stack, event.getSource()));
-				return;
-			}
-		}
+		TotemType totemType = null;
 
-		if(event.getSource() == DamageSource.DROWN)
+		if(event.getSource() == DamageSource.LAVA)
+			totemType = TotemType.DAMAGE_LAVA;
+
+		else if(event.getSource() == DamageSource.DROWN)
+			totemType = TotemType.DAMAGE_DROWN;
+
+		if(totemType != null)
 		{
-			ItemStack stack = findTotem((EntityPlayer) event.getEntityLiving(), TotemType.DAMAGE_DROWN);
+			ItemStack stack = findTotem((EntityPlayer) event.getEntityLiving(), totemType);
 			if(!stack.isEmpty())
 			{
 				event.setCanceled(activateTotem((EntityPlayer) event.getEntityLiving(), stack, event.getSource()));
-				return;
 			}
 		}
 	}
@@ -103,6 +103,8 @@ public class TotemEventHandler
 		if(!event.isCanceled() && event.getEntityLiving() instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+
+			TotemType type = null;
 
 			if(event.getSource() == DamageSource.FALL)
 			{
@@ -201,25 +203,36 @@ public class TotemEventHandler
 
 	private static Item randomTotem(Random r)
 	{
-		Item[] items = new Item[] {
-				ModItems.TOTEM_HEAD_LAVA,
-				ModItems.TOTEM_HEAD_PLUMMETING,
-				ModItems.TOTEM_HEAD_UNDYING,
-				ModItems.TOTEM_HEAD_BREATHING,
-				ModItems.TOTEM_HEAD_EXPLODE,
-				ModItems.TOTEM_HEAD_REPAIR
-		};
+		List<Item> totems = getListOfTotems();
 
 		int c = 0;
-		Item it = items[r.nextInt(items.length)];
+		Item it = totems.get(r.nextInt(totems.size()));
 		while(isTotemOnDropBlacklist(it) && c < 200)
 		{
-			it = items[r.nextInt(items.length)];
+			it = totems.get(r.nextInt(totems.size()));
 			c++;
 		}
 
 		return it;
 	}
+
+	public static List<Item> getListOfTotems()
+	{
+		if(cacheList == null)
+		{
+			cacheList = new ArrayList<>();
+			for(Item item : ForgeRegistries.ITEMS)
+			{
+				if((item instanceof ItemTotemHead) && ((ItemTotemHead) item).doesDrop())
+				{
+					cacheList.add(item);
+				}
+			}
+		}
+
+		return cacheList;
+	}
+	private static List<Item> cacheList = null;
 
 	public static boolean activateTotem(EntityPlayer living, ItemStack stack, @Nullable DamageSource source)
 	{
@@ -230,7 +243,7 @@ public class TotemEventHandler
 
 		boolean result = ((ItemTotemBase)stack.getItem()).onActivate(living, stack, source);
 
-		if(Loader.isModLoaded("baubles"))
+		if(Loader.isModLoaded("baubles") && !living.world.isRemote)
 		{
 			PacketHandler.INSTANCE.sendToAllTracking(new PacketSync(living, BaubleType.CHARM.ordinal(), stack), living);
 			PacketHandler.INSTANCE.sendTo(new PacketSync(living, BaubleType.CHARM.ordinal(), stack), (EntityPlayerMP) living);
