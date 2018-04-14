@@ -5,13 +5,29 @@ package party.lemons.totemexpansion.item;
  */
 public class ItemTotemHead extends ItemBase
 {
-	public ItemTotemHead(String name)
+	private final ItemTotemBase totem;
+	private final float costFactor;
+
+	public ItemTotemHead(String name, ItemTotemBase totem, float costFactor)
 	{
 		super(name);
+
+		this.totem = totem;
+		this.costFactor = costFactor;
 	}
 
 	public boolean doesDrop()
 	{
 		return true;
+	}
+
+	public ItemTotemBase getTotem()
+	{
+		return totem;
+	}
+
+	public float getCostFactor()
+	{
+		return costFactor;
 	}
 }

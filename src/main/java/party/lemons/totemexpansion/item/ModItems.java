@@ -90,14 +90,19 @@ public class ModItems
 		registerTotem(r, new ItemTotemRepair(), "repair");
 		registerTotem(r, new ItemTotemSpelunking(), "spelunking");
 		registerTotem(r, new ItemTotemTime(), "time");
-		registerTotem(r, new ItemTotemRecall(), "recalling");
+		registerTotem(r, new ItemTotemRecall(), "recalling", 1.4F);
 
 		r.register(new ItemBase("totem_base"));
 	}
 
+	private static void registerTotem(IForgeRegistry<Item> registry, ItemTotemBase totem, String name, float costFactor)
+	{
+		registry.registerAll(totem, new ItemTotemHead("totem_head_" + name, totem, costFactor));
+	}
+
 	private static void registerTotem(IForgeRegistry<Item> registry, ItemTotemBase totem, String name)
 	{
-		registry.registerAll(totem, new ItemTotemHead("totem_head_" + name));
+		registerTotem(registry, totem, name, 1F);
 	}
 
 	public static List<Item> itemList = new ArrayList<>();

@@ -95,6 +95,12 @@ public class ModConfig
 	@Config.Name("Render Bauble On Player")
 	public static boolean RENDER_BAUBLE = true;
 
+	@Config.Name("Totem head price min")
+	public static int VILLAGER_HEAD_MIN = 7;
+
+	@Config.Name("Totem head price max")
+	public static int VILLAGER_HEAD_MAX = 20;
+
 	@Config.Ignore
 	public static List<Block> ORES = new ArrayList<>();
 }

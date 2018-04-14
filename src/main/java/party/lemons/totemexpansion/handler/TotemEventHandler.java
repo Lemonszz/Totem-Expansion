@@ -182,7 +182,7 @@ public class TotemEventHandler
 			{
 				if(event.getEntityLiving().getRNG().nextInt(ModConfig.HEAD_DROP_RATE - (event.getLootingLevel() * ModConfig.HEAD_DROP_LOOTING_MODIFIER)) == 1)
 				{
-					ItemStack stack = new ItemStack(randomTotem(event.getEntityLiving().getRNG()));
+					ItemStack stack = new ItemStack(TotemUtil.randomTotem(event.getEntityLiving().getRNG()));
 					EntityItem eI = new EntityItem(event.getEntity().world, event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, stack);
 
 					event.getDrops().add(eI);
@@ -201,42 +201,9 @@ public class TotemEventHandler
 		}
 	}
 
-	private static Item randomTotem(Random r)
-	{
-		List<Item> totems = getListOfTotems();
-
-		int c = 0;
-		Item it = totems.get(r.nextInt(totems.size()));
-		while(isTotemOnDropBlacklist(it) && c < 200)
-		{
-			it = totems.get(r.nextInt(totems.size()));
-			c++;
-		}
-
-		return it;
-	}
-
-	public static List<Item> getListOfTotems()
-	{
-		if(cacheList == null)
-		{
-			cacheList = new ArrayList<>();
-			for(Item item : ForgeRegistries.ITEMS)
-			{
-				if((item instanceof ItemTotemHead) && ((ItemTotemHead) item).doesDrop())
-				{
-					cacheList.add(item);
-				}
-			}
-		}
-
-		return cacheList;
-	}
-	private static List<Item> cacheList = null;
-
 	public static boolean activateTotem(EntityPlayer living, ItemStack stack, @Nullable DamageSource source)
 	{
-		if(isTotemBlacklisted(stack.getItem()))
+		if(TotemUtil.isTotemBlacklisted(stack.getItem()))
 		{
 			return false;
 		}
@@ -249,31 +216,6 @@ public class TotemEventHandler
 			PacketHandler.INSTANCE.sendTo(new PacketSync(living, BaubleType.CHARM.ordinal(), stack), (EntityPlayerMP) living);
 		}
 		return result;
-	}
-
-	private static boolean isTotemBlacklisted(Item item)
-	{
-		if(item instanceof ItemTotemBase)
-		{
-			for(String s : ModConfig.TOTEM_BLACKLIST)
-			{
-				if(s.equalsIgnoreCase(item.getRegistryName().toString()))
-					return true;
-			}
-		}
-
-		return false;
-	}
-
-	private static boolean isTotemOnDropBlacklist(Item i)
-	{
-		for(String s : ModConfig.TOTEM_HEAD_DROP_BLACKLIST)
-		{
-			if(s.equalsIgnoreCase(i.getRegistryName().toString()))
-				return true;
-		}
-
-		return false;
 	}
 
 	public static ItemStack findTotem(EntityPlayer player, TotemType type)
