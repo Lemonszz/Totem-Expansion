@@ -22,6 +22,9 @@ public class TotemUtil
 {
 	private TotemUtil(){}
 
+	/**
+	 * Updates spelunking effect ores from config
+	 */
 	public static void updateOreCache()
 	{
 		ModConfig.ORES.clear();
@@ -41,21 +44,25 @@ public class TotemUtil
 		}
 	}
 
-	public static Item randomTotem(Random r)
+	/**
+	 * Chooses a random totem
+	 * @param r
+	 * @return random totem
+	 */
+	public static Item randomTotemHead(Random r)
 	{
 		List<Item> totems = TotemUtil.getListOfTotemHeads();
-
-		int c = 0;
+		totems.removeIf(t -> isTotemOnDropBlacklist(t));
 		Item it = totems.get(r.nextInt(totems.size()));
-		while(isTotemOnDropBlacklist(it) && c < 200)
-		{
-			it = totems.get(r.nextInt(totems.size()));
-			c++;
-		}
 
 		return it;
 	}
 
+	/**
+	 * Checks if totem is on config blacklist
+	 * @param item
+	 * @return blacklisted
+	 */
 	public static boolean isTotemBlacklisted(Item item)
 	{
 		if(item instanceof ItemTotemBase)
@@ -70,6 +77,11 @@ public class TotemUtil
 		return false;
 	}
 
+	/**
+	 * Returns if head is on mob drop blacklist
+	 * @param i
+	 * @return blacklisted
+	 */
 	public static boolean isTotemOnDropBlacklist(Item i)
 	{
 		for(String s : ModConfig.TOTEM_HEAD_DROP_BLACKLIST)
@@ -81,23 +93,33 @@ public class TotemUtil
 		return false;
 	}
 
+	/**
+	 * Returns a list of totem head items
+	 * @return totem heads
+	 */
 	public static List<Item> getListOfTotemHeads()
 	{
-		if(cacheList == null)
+		if(headCacheList == null)
 		{
-			cacheList = new ArrayList<>();
+			headCacheList = new ArrayList<>();
 			for(Item item : ForgeRegistries.ITEMS)
 			{
 				if((item instanceof ItemTotemHead) && ((ItemTotemHead) item).doesDrop())
 				{
-					cacheList.add(item);
+					headCacheList.add(item);
 				}
 			}
 		}
-		return cacheList;
+		return headCacheList;
 	}
-	private static List<Item> cacheList = null;
+	private static List<Item> headCacheList = null;
 
+
+	/**
+	 * Creates a PriceInfo from a Totem HEad
+	 * @param head
+	 * @return PriceInfo
+	 */
 	public static EntityVillager.PriceInfo getTotemPrice(ItemTotemHead head)
 	{
 		int min = (int) (ModConfig.VILLAGER_HEAD_MIN * head.getCostFactor());

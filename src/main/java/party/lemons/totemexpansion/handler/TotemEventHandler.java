@@ -11,7 +11,6 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.DamageSource;
@@ -20,7 +19,6 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -29,19 +27,13 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import party.lemons.totemexpansion.config.ModConfig;
 import party.lemons.totemexpansion.config.ModConstants;
 import party.lemons.totemexpansion.item.ItemTotemBase;
-import party.lemons.totemexpansion.item.ItemTotemHead;
-import party.lemons.totemexpansion.item.ModItems;
 import party.lemons.totemexpansion.item.TotemType;
 import party.lemons.totemexpansion.misc.TotemUtil;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Sam on 6/04/2018.
@@ -182,7 +174,7 @@ public class TotemEventHandler
 			{
 				if(event.getEntityLiving().getRNG().nextInt(ModConfig.HEAD_DROP_RATE - (event.getLootingLevel() * ModConfig.HEAD_DROP_LOOTING_MODIFIER)) == 1)
 				{
-					ItemStack stack = new ItemStack(TotemUtil.randomTotem(event.getEntityLiving().getRNG()));
+					ItemStack stack = new ItemStack(TotemUtil.randomTotemHead(event.getEntityLiving().getRNG()));
 					EntityItem eI = new EntityItem(event.getEntity().world, event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, stack);
 
 					event.getDrops().add(eI);
