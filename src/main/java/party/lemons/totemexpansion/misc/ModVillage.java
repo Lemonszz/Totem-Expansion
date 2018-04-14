@@ -59,7 +59,7 @@ public class ModVillage
 		}
 
 		addSkullTrade(career, 0, new EntityVillager.PriceInfo(15, 39));
-		addSkullTrade(career, 1, new EntityVillager.PriceInfo(15, 39));
+		addSkullTrade(career, 2, new EntityVillager.PriceInfo(15, 39));
 		addSkullTrade(career, 4, new EntityVillager.PriceInfo(15, 39));
 
 		VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
