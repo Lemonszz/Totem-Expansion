@@ -1,13 +1,18 @@
 entity.Villager.witch_doctor=巫师
-itemGroup.totemexpansion=图腾扩展
+itemGroup.totemexpansion=更好图腾
+
+commands.totem.usage=/totem [玩家] [物品]
+commands.totemeffect.useage=/totem [玩家] [物品]
+commands.totem.success=赋予玩家效果
+commands.totemeffect.success=赋予玩家效果
+command.totem.nototem=无效图腾
 
 effects.totemexpansion.spelunking=嗅探
 
-item.totem.desc=起死回生
-item.totemexpansion.totem_head_undying.name=不朽图腾
-
 item.totemexpansion.totem_base.name=图腾基座
 
+item.totemexpansion.totem_head_undying.name=不死图腾头部
+item.totem.desc=起死回生
 
 item.totemexpansion.totem_falling.name=升腾图腾
 item.totemexpansion.totem_head_plummeting.name=升腾图腾头部
@@ -32,3 +37,11 @@ item.totemexpansion.totem_repair.desc=修复耐久损耗殆尽的工具
 item.totemexpansion.totem_spelunking.name=占矿图腾
 item.totemexpansion.totem_head_spelunking.name=占矿图腾
 item.totemexpansion.totem_spelunking.desc=允许你探测周围矿石
+
+item.totemexpansion.totem_time.name=时械图腾
+item.totemexpansion.totem_head_time.name=时械图腾头部
+item.totemexpansion.totem_time.desc=扭转时间
+
+item.totemexpansion.totem_recalling.name=折越图腾
+item.totemexpansion.totem_head_recalling.name=折越图腾头部
+item.totemexpansion.totem_recalling.desc=返回出生点
