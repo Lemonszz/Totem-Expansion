@@ -95,6 +95,14 @@ public class ModConfig
 	@Config.Name("Render Bauble On Player")
 	public static boolean RENDER_BAUBLE = true;
 
+	@Config.RequiresMcRestart
+	@Config.Name("Enable the Witch Doctor Villager")
+	public static boolean VILLAGER_ENABLED = true;
+
+	@Config.RequiresMcRestart
+	@Config.Name("Enable the Witch Doctor's house in villages")
+	public static boolean VILLAGE_HOUSE_ENABLED = true;
+
 	@Config.Name("Totem head price min")
 	public static int VILLAGER_HEAD_MIN = 7;
 

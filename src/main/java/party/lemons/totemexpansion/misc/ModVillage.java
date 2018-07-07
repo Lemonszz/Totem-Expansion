@@ -41,30 +41,38 @@ public class ModVillage
 	@SubscribeEvent
 	public static void onRegisterVillage(RegistryEvent.Register<VillagerRegistry.VillagerProfession> event)
 	{
-		VillagerRegistry.VillagerProfession proff=  new VillagerRegistry.VillagerProfession(
-				ModConstants.MODID + ":witchdoctor",
-				ModConstants.MODID + ":textures/entity/villager/witch_doctor.png",
-				ModConstants.MODID + ":textures/entity/villager/witch_doctor_zombie.png");
-
-		event.getRegistry().register(
-				proff
-		);
-
-		VillagerRegistry.VillagerCareer career = new VillagerRegistry.VillagerCareer(proff, "witch_doctor");
-
-		addTrade(career, ModItems.TOTEM_BASE, new EntityVillager.PriceInfo(1, 5));
-		for(Item head : TotemUtil.getListOfTotemHeads())
+		if (ModConfig.VILLAGER_ENABLED)
 		{
-			addHeadTrade(career, (ItemTotemHead) head);
+			VillagerRegistry.VillagerProfession proff = new VillagerRegistry.VillagerProfession(
+					ModConstants.MODID + ":witchdoctor",
+					ModConstants.MODID + ":textures/entity/villager/witch_doctor.png",
+					ModConstants.MODID + ":textures/entity/villager/witch_doctor_zombie.png"
+			);
+
+			event.getRegistry().register(
+					proff
+			);
+
+			VillagerRegistry.VillagerCareer career = new VillagerRegistry.VillagerCareer(proff, "witch_doctor");
+
+			addTrade(career, ModItems.TOTEM_BASE, new EntityVillager.PriceInfo(1, 5));
+			for (Item head : TotemUtil.getListOfTotemHeads())
+			{
+				addHeadTrade(career, (ItemTotemHead) head);
+			}
+
+			addSkullTrade(career, 0, new EntityVillager.PriceInfo(15, 39));
+			addSkullTrade(career, 2, new EntityVillager.PriceInfo(15, 39));
+			addSkullTrade(career, 4, new EntityVillager.PriceInfo(15, 39));
 		}
 
-		addSkullTrade(career, 0, new EntityVillager.PriceInfo(15, 39));
-		addSkullTrade(career, 2, new EntityVillager.PriceInfo(15, 39));
-		addSkullTrade(career, 4, new EntityVillager.PriceInfo(15, 39));
-
-		VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
-		MapGenStructureIO.registerStructureComponent(WitchDoctorHouse.class, ModConstants.MODID + ":witchdoctor");
+		if (ModConfig.VILLAGE_HOUSE_ENABLED)
+		{
+			VillagerRegistry.instance().registerVillageCreationHandler(new VillageCreationHandler());
+			MapGenStructureIO.registerStructureComponent(WitchDoctorHouse.class, ModConstants.MODID + ":witchdoctor");
+		}
 	}
+
 
 	public static void addTrade(VillagerRegistry.VillagerCareer career, Item item, EntityVillager.PriceInfo info)
 	{
@@ -248,7 +256,10 @@ public class ModVillage
 		@Override
 		protected VillagerRegistry.VillagerProfession chooseForgeProfession(int count, VillagerRegistry.VillagerProfession prof)
 		{
-			return WITCH_DOCTOR;
+			if (ModConfig.VILLAGER_ENABLED)
+				return WITCH_DOCTOR;
+			else
+				return super.chooseForgeProfession(count, prof);
 		}
 	}
 }
