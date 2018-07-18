@@ -109,6 +109,11 @@ public class ModConfig
 	@Config.Name("Totem head price max")
 	public static int VILLAGER_HEAD_MAX = 20;
 
+	@Config.Name("Allowed Recall Dimensions")
+	public static int[] ALLOWED_RECALL_DIMENSIONS = {
+			0
+	};
+
 	@Config.Ignore
 	public static List<Block> ORES = new ArrayList<>();
 }

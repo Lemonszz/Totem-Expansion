@@ -45,3 +45,4 @@ item.totemexpansion.totem_time.desc=Advances time forward
 item.totemexpansion.totem_recalling.name=Totem of Recalling
 item.totemexpansion.totem_head_recalling.name=Totem of Recalling Head
 item.totemexpansion.totem_recalling.desc=Sends you back home
+item.totemexpansion.totem_recalling.error=§c§oThe totem shakes, but can not find your home.
