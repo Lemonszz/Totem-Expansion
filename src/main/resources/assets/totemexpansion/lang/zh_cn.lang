@@ -42,6 +42,7 @@ item.totemexpansion.totem_time.name=时械图腾
 item.totemexpansion.totem_head_time.name=时械图腾头部
 item.totemexpansion.totem_time.desc=扭转时间
 
-item.totemexpansion.totem_recalling.name=折越图腾
-item.totemexpansion.totem_head_recalling.name=折越图腾头部
+item.totemexpansion.totem_recalling.name=折跃图腾
+item.totemexpansion.totem_head_recalling.name=折跃图腾头部
 item.totemexpansion.totem_recalling.desc=返回出生点
+item.totemexpansion.totem_recalling.error=§c§o折跃失败，无法找到出生点。
