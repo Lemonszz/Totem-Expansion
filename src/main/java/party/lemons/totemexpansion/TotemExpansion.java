@@ -19,7 +19,7 @@ import party.lemons.totemexpansion.proxy.IProxy;
 /**
  * Created by Sam on 6/04/2018.
  */
-@Mod(modid = ModConstants.MODID, name = ModConstants.NAME, version = ModConstants.VERSION)
+@Mod(modid = ModConstants.MODID, name = ModConstants.NAME, version = ModConstants.VERSION, updateJSON = ModConstants.UPDATE)
 public class TotemExpansion
 {
 	@SidedProxy(clientSide = "party.lemons.totemexpansion.proxy.ClientProxy", serverSide = "party.lemons.totemexpansion.proxy.ServerProxy")
