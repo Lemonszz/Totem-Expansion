@@ -1,0 +1,48 @@
+entity.Villager.witch_doctor=Знахарь
+itemGroup.totemexpansion=Totem Expansion
+
+commands.totem.usage=/totem [player] [item]
+commands.totemeffect.useage=/totem [player] [item]
+commands.totem.success=Дал игроку эффект
+commands.totemeffect.success=Дал игроку эффект
+command.totem.nototem=Неправильный тотем
+
+effects.totemexpansion.spelunking=Спелеология
+
+item.totemexpansion.totem_base.name=Основа тотема
+
+item.totemexpansion.totem_head_undying.name=Голова тотема бессмертия
+item.totem.desc=Спасает от верной смерти
+
+item.totemexpansion.totem_falling.name=Тотем восхождения
+item.totemexpansion.totem_head_plummeting.name=Голова тотема восхождения
+item.totemexpansion.totem_falling.desc=Спасает от смертельного падения (падения в пустоту)
+
+item.totemexpansion.totem_lava.name=Тотем тления
+item.totemexpansion.totem_head_lava.name=Голова тотема тления
+item.totemexpansion.totem_lava.desc=Спасает от случайных падений в лаву
+
+item.totemexpansion.totem_breathing.name=Тотем дыхания
+item.totemexpansion.totem_head_breathing.name=Голова тотема дыхания
+item.totemexpansion.totem_breathing.desc=Спасает от удушья в глубинах вод
+
+item.totemexpansion.totem_explode.name=Тотем обезвреживания
+item.totemexpansion.totem_head_explode.name=Голова тотема обезвреживания
+item.totemexpansion.totem_explode.desc=Поглощает взрывную волну доходящую до вас
+
+item.totemexpansion.totem_repair.name=Тотем починки
+item.totemexpansion.totem_head_repair.name=Голова тотема починки
+item.totemexpansion.totem_repair.desc=Чинит инструмент, который неожиданно сломался у вас в руках
+
+item.totemexpansion.totem_spelunking.name=Тотем спелеологии
+item.totemexpansion.totem_head_spelunking.name=Голова тотема спелеологии
+item.totemexpansion.totem_spelunking.desc=Даёт возможность видеть руды вокруг вас
+
+item.totemexpansion.totem_time.name=Тотем повелителя времени
+item.totemexpansion.totem_head_time.name=Голова тотема повелителя времени
+item.totemexpansion.totem_time.desc=Двигает время вперёд
+
+item.totemexpansion.totem_recalling.name=Тотем возврата
+item.totemexpansion.totem_head_recalling.name=Голова тотема возврата
+item.totemexpansion.totem_recalling.desc=Возвращает вас домой
+item.totemexpansion.totem_recalling.error=§c§oТотем вибрирует, но не может найти ваш дом.
